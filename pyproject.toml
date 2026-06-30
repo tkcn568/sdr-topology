@@ -1,0 +1,20 @@
+[project]
+name = "sdr-topology"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "matplotlib>=3.11.0",
+    "numpy>=2.5.0",
+    "persim>=0.3.8",
+    "pyrtlsdr>=0.4.0",
+    "pyrtlsdrlib>=0.0.4",
+    "ripser>=0.6.15",
+    "scipy>=1.18.0",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=7.0.0",
+]
