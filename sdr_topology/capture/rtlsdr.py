@@ -1,15 +1,13 @@
 from __future__ import annotations
 
 import json
-import subprocess # in macOS, LIBUSB_ERROR_OVERFLOW errors occur with a sync process, but the CLI works
+import subprocess  # in macOS, LIBUSB_ERROR_OVERFLOW errors occur with a sync process, but the CLI works
 import tempfile
 import time
 from dataclasses import dataclass, asdict
 from pathlib import Path
 
 import numpy as np
-from rtlsdr import RtlSdr
-from rtlsdr.rtlsdr import LibUSBError
 from ..logging import logger
 
 
@@ -33,7 +31,7 @@ def capture(
     gain: str | float = "auto",
     environment_notes: str = "",
     device_index: int = 0,
-    chunk_size: int = 2**14
+    chunk_size: int = 2**14,
 ) -> tuple[np.ndarray, CaptureMetadata]:
     """
     Capture IQ samples from the RTL-SDR and save to disk.
@@ -51,10 +49,14 @@ def capture(
 
     cmd = [
         "rtl_sdr",
-        "-f", str(center_freq_hz),
-        "-s", str(sample_rate_hz),
-        "-n", str(n_samples),
-        "-d", str(device_index),
+        "-f",
+        str(center_freq_hz),
+        "-s",
+        str(sample_rate_hz),
+        "-n",
+        str(n_samples),
+        "-d",
+        str(device_index),
         *gain_args,
         str(tmp_bin),
     ]

@@ -1,4 +1,5 @@
 """Unit tests for capture module."""
+
 import json
 import tempfile
 from pathlib import Path
@@ -54,7 +55,7 @@ class TestLoadPlayback:
             tmpdir = Path(tmpdir)
 
             # Create test data
-            samples = np.array([1+2j, 3+4j, 5+6j], dtype=np.complex64)
+            samples = np.array([1 + 2j, 3 + 4j, 5 + 6j], dtype=np.complex64)
             np.save(tmpdir / "test.npy", samples)
 
             # Create metadata sidecar
@@ -85,8 +86,9 @@ class TestLoadPlayback:
         with tempfile.TemporaryDirectory() as tmpdir:
             tmpdir = Path(tmpdir)
 
-            samples = np.random.random(100).astype(np.complex64) + \
-                      1j * np.random.random(100).astype(np.complex64)
+            samples = np.random.random(100).astype(
+                np.complex64
+            ) + 1j * np.random.random(100).astype(np.complex64)
             np.save(tmpdir / "test.npy", samples)
 
             metadata_dict = {
@@ -110,7 +112,7 @@ class TestLoadPlayback:
         with tempfile.TemporaryDirectory() as tmpdir:
             tmpdir = Path(tmpdir)
 
-            samples = np.array([1+2j], dtype=np.complex64)
+            samples = np.array([1 + 2j], dtype=np.complex64)
             np.save(tmpdir / "test.npy", samples)
 
             with pytest.raises(FileNotFoundError):
