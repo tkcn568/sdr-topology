@@ -179,7 +179,9 @@ def fnn_curve(
     return fnn
 
 
-def optimal_tau(samples: np.ndarray, max_tau: int, n_bins: int = 64, prominence: float = 0.01) -> int:
+def optimal_tau(
+    samples: np.ndarray, max_tau: int, n_bins: int = 64, prominence: float = 0.01
+) -> int:
     """
     Select embedding delay tau as the first local minimum of the AMI curve.
 

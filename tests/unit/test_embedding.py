@@ -17,7 +17,7 @@ F0 = 10
 DURATION = 2.0
 T = np.linspace(0, DURATION, int(FS * DURATION), endpoint=False)
 SINE = np.sin(2 * np.pi * F0 * T).astype(np.float32)
-EXPECTED_TAU = FS // (4 * F0) # should be 25
+EXPECTED_TAU = FS // (4 * F0)  # should be 25
 
 
 class TestGetMagnitude:
@@ -65,8 +65,8 @@ class TestEmbed:
         # Each column should be the signal shifted by tau
         tau = 5
         cloud = embed(SINE, dim=2, tau=tau)
-        np.testing.assert_array_equal(cloud[:, 0], SINE[:len(cloud)])
-        np.testing.assert_array_equal(cloud[:, 1], SINE[tau:tau + len(cloud)])
+        np.testing.assert_array_equal(cloud[:, 0], SINE[: len(cloud)])
+        np.testing.assert_array_equal(cloud[:, 1], SINE[tau : tau + len(cloud)])
 
 
 class TestAmiCurve:
