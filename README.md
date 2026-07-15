@@ -11,58 +11,82 @@ A Python project for analyzing Software Defined Radio (SDR) topology using topol
 
 ## Installation
 
-This project uses [uv](https://docs.astral.sh/uv/) for dependency management.
-
 ### Prerequisites
 
 - Python 3.14 or later
-- uv package manager
 
-### Setup
+### As a Package (End Users)
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/tkcn568/sdr-topology.git
-   cd sdr-topology
-   ```
+Install directly from GitHub:
 
-2. Install dependencies:
-   ```bash
-   uv sync
-   ```
+```bash
+pip install git+https://github.com/tkcn568/sdr-topology.git
+```
+
+Or with uv:
+
+```bash
+uv pip install git+https://github.com/tkcn568/sdr-topology.git
+```
+
+Once installed, the `sdrtopo` command is available system-wide.
+
+### For Development
+
+Clone the repository and use [uv](https://docs.astral.sh/uv/) for dependency management:
+
+```bash
+git clone https://github.com/tkcn568/sdr-topology.git
+cd sdr-topology
+uv sync
+```
+
+In development mode, use `uv run sdrtopo` to invoke the CLI.
 
 ## Usage
 
 ### Command-line interface
 
-The `sdrtopo` command provides tools for SDR signal analysis:
+The `sdrtopo` command provides tools for SDR signal analysis. Usage varies by installation method:
+
+**Installed as a package:**
+```bash
+sdrtopo <command> [options]
+```
+
+**Development mode (from cloned repo):**
+```bash
+uv run sdrtopo <command> [options]
+```
+
+### Common commands
 
 ```bash
 # Capture IQ samples from RTL-SDR hardware
-uv run sdrtopo capture --freq 99500000 --samples 250000 --output capture.npy
+sdrtopo capture --freq 99500000 --samples 250000 --output capture.npy
 
 # Analyze a capture with IQ-plane embedding
-uv run sdrtopo analyze --capture-path capture.npy --method iq --label fm_broadcast
+sdrtopo analyze --capture-path capture.npy --method iq --label fm_broadcast
 
 # Analyze with time-delay embedding
-uv run sdrtopo analyze --capture-path capture.npy --method delay --label noise_floor
+sdrtopo analyze --capture-path capture.npy --method delay --label noise_floor
 
 # List saved signal profiles
-uv run sdrtopo list
+sdrtopo list
 
 # Show a specific profile entry
-uv run sdrtopo show <profile_key>
+sdrtopo show <profile_key>
 
 # Compare two profiles using Wasserstein distance
-uv run sdrtopo compare <profile_key_1> <profile_key_2>
+sdrtopo compare <profile_key_1> <profile_key_2>
 
 # Plot a persistence diagram
-uv run sdrtopo plot <profile_key> --output diagram.png
+sdrtopo plot <profile_key> --output diagram.png
 ```
 
 For full command options, run:
 ```bash
-uv run sdrtopo --help
+sdrtopo --help
 ```
 
 ## Development
