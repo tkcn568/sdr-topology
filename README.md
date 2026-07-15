@@ -33,16 +33,36 @@ This project uses [uv](https://docs.astral.sh/uv/) for dependency management.
 
 ## Usage
 
-### Running the main script
+### Command-line interface
+
+The `sdrtopo` command provides tools for SDR signal analysis:
 
 ```bash
-uv run python main.py
+# Capture IQ samples from RTL-SDR hardware
+uv run sdrtopo capture --freq 99500000 --samples 250000 --output capture.npy
+
+# Analyze a capture with IQ-plane embedding
+uv run sdrtopo analyze --capture-path capture.npy --method iq --label fm_broadcast
+
+# Analyze with time-delay embedding
+uv run sdrtopo analyze --capture-path capture.npy --method delay --label noise_floor
+
+# List saved signal profiles
+uv run sdrtopo list
+
+# Show a specific profile entry
+uv run sdrtopo show <profile_key>
+
+# Compare two profiles using Wasserstein distance
+uv run sdrtopo compare <profile_key_1> <profile_key_2>
+
+# Plot a persistence diagram
+uv run sdrtopo plot <profile_key> --output diagram.png
 ```
 
-### Running tests
-
+For full command options, run:
 ```bash
-uv run pytest
+uv run sdrtopo --help
 ```
 
 ## Development
@@ -53,6 +73,12 @@ Development dependencies are defined in `pyproject.toml`. To install them:
 
 ```bash
 uv sync
+```
+
+### Running tests
+
+```bash
+uv run pytest
 ```
 
 ### Code quality
@@ -66,20 +92,32 @@ uv run ruff format .
 
 ## Dependencies
 
-- **matplotlib** - Plotting and visualization
+### Core
 - **numpy** - Numerical computing
 - **scipy** - Scientific computing
-- **pyrtlsdr** - RTL-SDR device interface
-- **pyrtlsdrlib** - RTL-SDR library bindings
+- **matplotlib** - Plotting and visualization
 - **ripser** - Persistent homology computation
 - **persim** - Persistence diagram similarity measures
+
+### CLI & RTL-SDR
+- **click** - Command-line interface framework
+- **rich** - Terminal formatting and rendering
+- **pyrtlsdr** - RTL-SDR device interface
+- **pyrtlsdrlib** - RTL-SDR library bindings
 
 ## Project Structure
 
 - `sdr_topology/` - Main package
-- `tests/` - Test suite
-- `docs/` - Documentation
-- `main.py` - Entry point script
+  - `cli.py` - Command-line interface (entry point: `sdrtopo`)
+  - `pipeline.py` - End-to-end workflows for embedding and persistence
+  - `capture/` - RTL-SDR hardware capture
+  - `embedding/` - Embedding methods (IQ plane, time-delay)
+  - `topology/` - Persistent homology computation and feature extraction
+  - `profiles/` - Signal profile library management
+  - `visualization/` - Diagram and embedding plotting
+  - `logging.py` - Logging configuration
+- `tests/` - Test suite (organized by module)
+- `docs/` - Documentation and examples
 
 ## Gotchas
 
