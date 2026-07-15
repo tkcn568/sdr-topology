@@ -101,7 +101,7 @@ macOS Homebrew installs librtlsdr 2.0.2, but the dylib is for version 2.0.1. Bui
 
 ## Note on AI-Generated Content
 
-Documentation and unit tests in this project may have been generated or assisted by large language models. While reviewed and validated, readers should be aware of this when evaluating the material.
+Documentation, commit messages, and unit tests in this project may have been generated or assisted by large language models. While reviewed and validated, readers should be aware of this when evaluating the material.
 
 ## License
 
