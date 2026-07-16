@@ -13,6 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v3
+      - run: uv sync --group dev
       - run: uv run ruff format --check .
 
   lint:
@@ -21,6 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v3
+      - run: uv sync --group dev
       - run: uv run ruff check .
 
   test:
@@ -29,5 +31,5 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v3
-      - run: uv sync
+      - run: uv sync --group dev
       - run: uv run pytest -q
