@@ -93,11 +93,13 @@ sdrtopo --help
 
 ### Installing development dependencies
 
-Development dependencies are defined in `pyproject.toml`. To install them:
+Development dependencies (ruff, pytest) are defined in `pyproject.toml`. To install them:
 
 ```bash
 uv sync
 ```
+
+(This syncs both main and optional dependencies by default.)
 
 ### Running tests
 
