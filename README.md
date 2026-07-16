@@ -114,6 +114,16 @@ uv run ruff check .
 uv run ruff format .
 ```
 
+### CI and Security
+
+GitHub Actions workflows run automatically on pull requests and pushes to main:
+
+- **CI workflow** (`ci.yml`) — Format check, lint, and test suite
+- **CodeQL scanning** (`codeql.yml`) — Security analysis on PR, push, and weekly schedule
+
+**Dependabot:** Enable automated dependency updates in repository settings
+(Settings → Code security and analysis → Dependabot).
+
 ## Dependencies
 
 ### Core
