@@ -16,14 +16,14 @@ dependencies = [
     "scipy>=1.18.0",
 ]
 
-[project.optional-dependencies]
+[project.scripts]
+sdrtopo = "sdr_topology.cli:main"
+
+[dependency-groups]
 dev = [
     "ruff>=0.6.0",
     "pytest>=7.0.0",
 ]
-
-[project.scripts]
-sdrtopo = "sdr_topology.cli:main"
 
 [tool.setuptools.packages.find]
 exclude = ["captures*", "tests*"]
