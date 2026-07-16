@@ -1,6 +1,6 @@
 import numpy as np
 import pytest
-from sdr_topology.topology.persistence import compute, PersistenceDiagram
+from sdr_topology.topology.persistence import compute
 from sdr_topology.topology.features import (
     lifetimes,
     max_persistence,

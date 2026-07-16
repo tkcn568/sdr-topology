@@ -3,7 +3,7 @@ from pathlib import Path
 
 import numpy as np
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D # noqa: F401 — registers 3D projection
+from mpl_toolkits.mplot3d import Axes3D  # noqa: F401 — registers 3D projection
 from ..logging import logger
 
 
@@ -69,12 +69,18 @@ def plot_point_cloud(
     if is_3d:
         ax = fig.add_subplot(111, projection="3d")
         sc = ax.scatter(
-            pc[:, 0], pc[:, 1], pc[:, 2],
-            c=colors, cmap=cmap, s=2, alpha=0.6,
+            pc[:, 0],
+            pc[:, 1],
+            pc[:, 2],
+            c=colors,
+            cmap=cmap,
+            s=2,
+            alpha=0.6,
         )
         if connect:
-            ax.plot(pc[:, 0], pc[:, 1], pc[:, 2],
-                    color="gray", linewidth=0.3, alpha=0.4)
+            ax.plot(
+                pc[:, 0], pc[:, 1], pc[:, 2], color="gray", linewidth=0.3, alpha=0.4
+            )
 
         ax.set_xlabel("dim 0")
         ax.set_ylabel("dim 1")
@@ -82,12 +88,15 @@ def plot_point_cloud(
     else:
         ax = fig.add_subplot(111)
         sc = ax.scatter(
-            pc[:, 0], pc[:, 1],
-            c=colors, cmap=cmap, s=2, alpha=0.6,
+            pc[:, 0],
+            pc[:, 1],
+            c=colors,
+            cmap=cmap,
+            s=2,
+            alpha=0.6,
         )
         if connect:
-            ax.plot(pc[:, 0], pc[:, 1],
-                    color="gray", linewidth=0.3, alpha=0.4)
+            ax.plot(pc[:, 0], pc[:, 1], color="gray", linewidth=0.3, alpha=0.4)
         ax.set_xlabel("dim 0")
         ax.set_ylabel("dim 1")
         ax.set_aspect("equal")

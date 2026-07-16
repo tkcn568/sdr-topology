@@ -9,6 +9,7 @@ from ..logging import logger
 from ..topology.persistence import PersistenceDiagram
 from ..topology.features import lifetimes as compute_lifetimes
 
+
 def plot(
     diagram: PersistenceDiagram,
     output_path: Path | None = None,
@@ -70,7 +71,7 @@ def plot(
 
         dgms_to_plot.append(dgm)
         labels.append(f"$H_{d}$")
-    
+
     fig, ax = plt.subplots(figsize=(6, 6))
     plot_diagrams(dgms_to_plot, labels=labels, ax=ax)
 
@@ -132,12 +133,23 @@ def plot_lifetime_distribution(
     fig, ax = plt.subplots(figsize=(6, 4))
 
     if len(lt) == 0:
-        ax.text(0.5, 0.5, f"No finite H{dim} features",
-                ha="center", va="center", transform=ax.transAxes)
+        ax.text(
+            0.5,
+            0.5,
+            f"No finite H{dim} features",
+            ha="center",
+            va="center",
+            transform=ax.transAxes,
+        )
     else:
         ax.hist(lt, bins=n_bins, color="steelblue", edgecolor="white", linewidth=0.5)
-        ax.axvline(lt.max(), color="crimson", linestyle="--",
-                   linewidth=1.0, label=f"max = {lt.max():.3f}")
+        ax.axvline(
+            lt.max(),
+            color="crimson",
+            linestyle="--",
+            linewidth=1.0,
+            label=f"max = {lt.max():.3f}",
+        )
         ax.legend(fontsize=9)
 
     ax.set_xlabel("Lifetime (death - birth)")
@@ -145,7 +157,7 @@ def plot_lifetime_distribution(
 
     if title:
         ax.title(title, fontsize=11)
-    
+
     plt.tight_layout()
 
     if output_path is not None:

@@ -69,7 +69,9 @@ def run_iq(
     """
     samples, metadata = _get_samples(capture_path, capture_params)
 
-    point_cloud = iq_embed(samples=samples, n_points=n_points, start=start, stride=stride)
+    point_cloud = iq_embed(
+        samples=samples, n_points=n_points, start=start, stride=stride
+    )
     diagram = compute(point_cloud, maxdim=maxdim)
 
     embedding_params = EmbeddingParams(
@@ -107,7 +109,7 @@ def run_delay(
     max_tau: int = 50,
     maxdim: int = 1,
     notes: str = "",
-    save_entry: bool = True
+    save_entry: bool = True,
 ) -> ProfileEntry:
     """
     End-to-end pipeline: time-delay embedding path.
@@ -156,14 +158,18 @@ def run_delay(
     in diagram computations &mdash; maxdim is the right variable for the compute()
     maxdim parameter.
     """
-    samples, metadata = _get_samples(capture_path=capture_path, capture_params=capture_params)
+    samples, metadata = _get_samples(
+        capture_path=capture_path, capture_params=capture_params
+    )
 
     magnitude = get_magnitude(samples=samples)[:n_points]
     selected_tau = tau if tau is not None else optimal_tau(magnitude, max_tau=max_tau)
     # max_dim: ceiling for FNN embedding dimension search
     # maxdim: maximum homology dimension for Ripser — independent of embedding dim
-    selected_dim = dim if dim is not None else optimal_dim(
-        magnitude, tau=selected_tau, max_dim=max_dim
+    selected_dim = (
+        dim
+        if dim is not None
+        else optimal_dim(magnitude, tau=selected_tau, max_dim=max_dim)
     )
     point_cloud = delay_embed(magnitude, dim=selected_dim, tau=selected_tau)
     diagram = compute(point_cloud, maxdim=maxdim)
@@ -182,7 +188,7 @@ def run_delay(
         capture_metadata=metadata,
         embedding_params=embedding_params,
         diagram=diagram,
-        notes=notes
+        notes=notes,
     )
 
     if save_entry:
@@ -191,7 +197,9 @@ def run_delay(
     return entry
 
 
-def _get_samples(capture_path: Path | None, capture_params: dict | None) -> tuple[np.ndarray, CaptureMetadata]:
+def _get_samples(
+    capture_path: Path | None, capture_params: dict | None
+) -> tuple[np.ndarray, CaptureMetadata]:
     """
     Load samples from disk or run a new capture.
 

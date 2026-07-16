@@ -110,7 +110,7 @@ def betti_numbers(
 
     if epsilon is None:
         epsilon = float(np.median(pairs[:, 1])) * 0.9
-    
+
     return int(np.sum((pairs[:, 0] <= epsilon) & (pairs[:, 1] > epsilon)))
 
 
@@ -153,10 +153,10 @@ def betti_curve(
     eps_max = pairs[:, 1].max()
     epsilons = np.linspace(eps_min, eps_max, n_steps, dtype=np.float32)
 
-    counts = np.array([
-        int(np.sum((pairs[:, 0] <= eps) & (pairs[:, 1] > eps)))
-        for eps in epsilons
-    ], dtype=np.int32)
+    counts = np.array(
+        [int(np.sum((pairs[:, 0] <= eps) & (pairs[:, 1] > eps))) for eps in epsilons],
+        dtype=np.int32,
+    )
 
     return epsilons, counts
 

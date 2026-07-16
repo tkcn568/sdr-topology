@@ -25,12 +25,13 @@ class EmbeddingParams:
     Stores enough information to reproduce the embedding from the raw
     capture without re-running parameter selection.
     """
-    method: str          # "delay" or "iq"
-    dim: int | None      # embedding dimension (delay only)
-    tau: int | None      # time delay in samples (delay only)
-    n_points: int        # number of points in the point cloud
-    start: int = 0       # start index into capture (iq only)
-    stride: int = 1      # stride (iq only)
+
+    method: str  # "delay" or "iq"
+    dim: int | None  # embedding dimension (delay only)
+    tau: int | None  # time delay in samples (delay only)
+    n_points: int  # number of points in the point cloud
+    start: int = 0  # start index into capture (iq only)
+    stride: int = 1  # stride (iq only)
 
 
 @dataclass
@@ -55,6 +56,7 @@ class ProfileEntry:
         Free-form notes about this specific entry — signal conditions,
         anomalies, or anything not captured by structured metadata.
     """
+
     key: str
     label: str
     capture_metadata: CaptureMetadata
@@ -201,9 +203,7 @@ def list_entries(library_dir: Path) -> list[str]:
     library_dir = Path(library_dir)
     if not library_dir.exists():
         return []
-    return sorted(
-        p.stem for p in library_dir.glob("*.json")
-    )
+    return sorted(p.stem for p in library_dir.glob("*.json"))
 
 
 def query(
@@ -242,11 +242,15 @@ def query(
 
         if label is not None and entry.label != label:
             continue
-        if center_freq_hz is not None and \
-            entry.capture_metadata.center_freq_hz != center_freq_hz:
+        if (
+            center_freq_hz is not None
+            and entry.capture_metadata.center_freq_hz != center_freq_hz
+        ):
             continue
-        if sample_rate_hz is not None and \
-            entry.capture_metadata.sample_rate_hz != sample_rate_hz:
+        if (
+            sample_rate_hz is not None
+            and entry.capture_metadata.sample_rate_hz != sample_rate_hz
+        ):
             continue
 
         results.append(entry)
@@ -284,7 +288,5 @@ def make_entry(
         capture_metadata=capture_metadata,
         embedding_params=embedding_params,
         diagram=diagram,
-        notes=notes
+        notes=notes,
     )
-
-

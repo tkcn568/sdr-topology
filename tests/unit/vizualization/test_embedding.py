@@ -1,6 +1,7 @@
 import numpy as np
 import pytest
 import matplotlib
+
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from sdr_topology.visualization.embedding import plot_point_cloud
@@ -11,9 +12,9 @@ THETA = np.linspace(0, 2 * np.pi, N, endpoint=False)
 CIRCLE_2D = np.stack([np.cos(THETA), np.sin(THETA)], axis=1).astype(np.float32)
 
 # Synthetic 3D helix
-HELIX_3D = np.stack([
-    np.cos(THETA), np.sin(THETA), np.linspace(0, 1, N)
-], axis=1).astype(np.float32)
+HELIX_3D = np.stack(
+    [np.cos(THETA), np.sin(THETA), np.linspace(0, 1, N)], axis=1
+).astype(np.float32)
 
 
 class TestPlotPointCloud:

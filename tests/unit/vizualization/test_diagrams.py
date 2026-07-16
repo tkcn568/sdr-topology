@@ -3,6 +3,7 @@
 import numpy as np
 import pytest
 import matplotlib
+
 matplotlib.use("Agg")  # non-interactive backend for tests
 import matplotlib.pyplot as plt
 from sdr_topology.topology.persistence import compute

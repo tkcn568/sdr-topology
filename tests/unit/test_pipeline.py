@@ -10,8 +10,8 @@ RNG = np.random.default_rng(42)
 # Simulate a noisy rotating IQ signal
 THETA = np.linspace(0, 40 * np.pi, N)
 SYNTHETIC = (
-    (np.cos(THETA) + 0.1 * RNG.standard_normal(N)) +
-    1j * (np.sin(THETA) + 0.1 * RNG.standard_normal(N))
+    (np.cos(THETA) + 0.1 * RNG.standard_normal(N))
+    + 1j * (np.sin(THETA) + 0.1 * RNG.standard_normal(N))
 ).astype(np.complex64)
 
 METADATA = CaptureMetadata(
