@@ -1,11 +1,13 @@
 # Integration test for capture functionality
 # Requires hardware: RTL-SDR device
-# Run from project root with `uv run pytest tests/functiona/test_capture_hardware.py`
+# Run from project root with `uv run pytest tests/functional/test_capture_hardware.py -m hardware`
 
+import pytest
 from pathlib import Path
 from sdr_topology.capture.rtlsdr import capture
 
 
+@pytest.mark.hardware
 def test_capture_kiss_fm():
     """Integration test: capture from WBAI 99.5 MHz."""
     samples, metadata = capture(
