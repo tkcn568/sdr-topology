@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import json
 import subprocess  # in macOS, LIBUSB_ERROR_OVERFLOW errors occur with a sync process, but the CLI works
-import tempfile
 import time
 from dataclasses import dataclass, asdict
 from tempfile import NamedTemporaryFile
@@ -44,7 +43,6 @@ def capture(
     Returns the samples array and metadata.
     """
     output_path = Path(output_path)
-
 
     gain_args = [] if gain == "auto" else ["-g", str(gain)]
 
