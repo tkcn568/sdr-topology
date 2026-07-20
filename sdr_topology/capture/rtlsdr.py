@@ -5,6 +5,7 @@ import subprocess  # in macOS, LIBUSB_ERROR_OVERFLOW errors occur with a sync pr
 import tempfile
 import time
 from dataclasses import dataclass, asdict
+from tempfile import NamedTemporaryFile
 from pathlib import Path
 
 import numpy as np
@@ -43,34 +44,31 @@ def capture(
     Returns the samples array and metadata.
     """
     output_path = Path(output_path)
-    tmp_bin = Path(tempfile.mktemp(suffix=".bin"))
+
 
     gain_args = [] if gain == "auto" else ["-g", str(gain)]
 
-    cmd = [
-        "rtl_sdr",
-        "-f",
-        str(center_freq_hz),
-        "-s",
-        str(sample_rate_hz),
-        "-n",
-        str(n_samples),
-        "-d",
-        str(device_index),
-        *gain_args,
-        str(tmp_bin),
-    ]
+    with NamedTemporaryFile(suffix=".bin") as tmp_bin:
+        cmd = [
+            "rtl_sdr",
+            "-f",
+            str(center_freq_hz),
+            "-s",
+            str(sample_rate_hz),
+            "-n",
+            str(n_samples),
+            "-d",
+            str(device_index),
+            *gain_args,
+            str(tmp_bin),
+        ]
 
-    result = subprocess.run(cmd, capture_output=True, text=True)
-    if not tmp_bin.exists() or tmp_bin.stat().st_size == 0:
-        error_msg = f"rtl_sdr capture failed:\n{result.stderr}"
-        logger.error(error_msg)
-        raise RuntimeError(error_msg)
+        result = subprocess.run(cmd, capture_output=True, text=True)
+        logger.info(f"Results obtained. Details:\n\n{result}")
 
-    raw = np.fromfile(tmp_bin, dtype=np.uint8).astype(np.float32)
-    raw -= 127.5
-    samples = (raw[0::2] + 1j * raw[1::2]).astype(np.complex64)
-    tmp_bin.unlink()
+        raw = np.fromfile(tmp_bin, dtype=np.uint8).astype(np.float32)
+        raw -= 127.5
+        samples = (raw[0::2] + 1j * raw[1::2]).astype(np.complex64)
 
     if environment_notes == "":
         logger.warn(
