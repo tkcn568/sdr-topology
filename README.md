@@ -6,7 +6,8 @@ A Python project for analyzing Software Defined Radio (SDR) topology using topol
 
 - SDR signal capture and analysis
 - Topological data analysis with persistent homology
-- Visualization of signal characteristics
+- Carrier frequency offset estimation and correction
+- Visualization of signal characteristics and persistence diagrams
 - Python 3.14+ support
 
 ## Installation
@@ -89,6 +90,25 @@ For full command options, run:
 sdrtopo --help
 ```
 
+### Carrier Frequency Offset Correction
+
+For signals with residual carrier frequency offset (due to tuner imprecision), the `embedding` module provides functions to estimate and correct the offset:
+
+```python
+from sdr_topology.embedding.utils import estimate_carrier_offset, correct_carrier_offset
+
+# Estimate the offset from captured samples
+offset = estimate_carrier_offset(samples)
+
+# Apply correction using estimated offset
+corrected = correct_carrier_offset(samples, offset)
+
+# Or estimate and correct in one call
+corrected = correct_carrier_offset(samples)
+```
+
+This is particularly important for constant-envelope modulation schemes like FM, where even small frequency offsets can distort the signal geometry in the IQ plane and affect topological feature detection.
+
 ## Development
 
 ### Installing development dependencies
@@ -147,7 +167,7 @@ GitHub Actions workflows run automatically on pull requests and pushes to main:
   - `cli.py` - Command-line interface (entry point: `sdrtopo`)
   - `pipeline.py` - End-to-end workflows for embedding and persistence
   - `capture/` - RTL-SDR hardware capture
-  - `embedding/` - Embedding methods (IQ plane, time-delay)
+  - `embedding/` - Embedding methods (IQ plane, time-delay) and carrier offset correction
   - `topology/` - Persistent homology computation and feature extraction
   - `profiles/` - Signal profile library management
   - `visualization/` - Diagram and embedding plotting
