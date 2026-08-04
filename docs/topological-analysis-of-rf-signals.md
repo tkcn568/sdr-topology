@@ -7,13 +7,13 @@ In a general sense, Perea and Harer[^6] describe persistent homology as
 > Persistent homology is a topological method for measuring the shapes of spaces
 > and the features of functions.
 
-Ghrist [^5] describes it as "a homology theory for point-cloud data sets," and Wright[^4] gives a slightly more terse definition of persistent homology as
+Ghrist[^5] describes it as "a homology theory for point-cloud data sets," and Wright[^4] gives a slightly more terse definition of persistent homology as
 
 > an algebraic method for discerning topological features of data,
 
 such as components, clusters, holes, and graph structure.
 
-Nevertheless, Perea, Harer, and Wright begin their exposition using the concept of a point cloud&mdash;a mechanism with which we sample to hopefully derive the "geometry of some implicit underlying object"[^6]&mdash;. Perea and Harer[^6] specifically show that a sliding-window, or time-delay embeddings, point cloud of periodic and quasi-periodic time-series data reveal a circular or toroidal structure, and the same time-delay embedding approach is used in `sdr_topology.embedding.delay` in this package. Thus, the point cloud is similarly significant in our analysis, as we will demonstrate with the following illustration.
+Nevertheless, Perea, Harer, and Wright begin their exposition using the concept of a point cloud&mdash;a mechanism with which we sample to hopefully derive the "geometry of some implicit underlying object"[^6]. Perea and Harer[^6] specifically show that a sliding-window, or time-delay embeddings, point cloud of periodic and quasi-periodic time-series data reveal a circular or toroidal structure, and the same time-delay embedding approach is used in `sdr_topology.embedding.delay` in this package. Thus, the point cloud is similarly significant in our analysis, as we will demonstrate with the following illustration.
 
 Consider a point cloud of data, which has holes at some scales. We use persistent homology to track which holes survive across a range of scales. In this document, we hand compute a boundary matrix and analyze its filtration step, which is related to tracking holes that survive across a range of scales, and compare it to data captures from our software package to determine if our hand computation aligns with the computation Ripser method applied in our Python package.
 
