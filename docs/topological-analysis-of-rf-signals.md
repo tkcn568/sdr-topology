@@ -115,10 +115,8 @@ with $$\textrm{rank}(\partial_{1})=3$$ and $$\textrm{nullity} = 2$$.
 
 This yields a basis for the 2-dimensional kernel, expressed in the edge basis $$\left(e_0, e_1, e_2, e_3, e_4\right)$$: a 4-cycle ("square") and 3-cycle ("triangle").
 
-$$
-e_0 + e_1 + e_2 + e_3\\
-e_1 + e_2 - e_4
-$$
+$$e_0 + e_1 + e_2 + e_3$$
+$$e_1 + e_2 - e_4$$
 
 which we suppose is related to $$\partial_{2}$$ columns, where $$e_0 + e_1 + e_2 + e_3 = \textrm{col}_1 + \textrm{col}_2$$.
 
