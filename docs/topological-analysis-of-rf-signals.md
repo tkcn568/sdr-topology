@@ -154,6 +154,10 @@ and the hand-computed matrix matches the persistence diagram. The loops given ab
 - ~~Does our working hypothesis hold? Does adjusting the frequency offset lead us closer to a clean circle, or is the assumption in our claim completely naive?~~
 - ~~Is the "circle" intuition a simplification? Can we ever expect this clean of an outcome?~~
 
+## Miscellany
+
+Wright's video surveys several authors, including Ghrist and Perea-Harer, cited in this document. It should be noted that Wright's definition follows Perea and Harer's framing, and he cites Ghrist's survey&mdash;a synthesis of Perea-Harer, Carlsson, Edelsbrunner, Zomorodian, et al. Wright's academic lineage [traces through Ghrist as his PhD advisor](https://www.mlwright.org/docs/cv_web.pdf), which may explain the closeness of the framing, though the content is independently traceable to the primary sources below.
+
 
 [^1]: This property is not specifically applied to FM and is a more general principle. [https://descanso.jpl.nasa.gov/monograph/series3/chapter2.pdf](https://descanso.jpl.nasa.gov/monograph/series3/chapter2.pdf)
 [^2]: Haykin, Simon and Moher, Michael. Chapter 4: Angle Modulation. _Communication Systems, 5th ed._
