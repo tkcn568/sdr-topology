@@ -21,7 +21,7 @@ We will attempt to look for holes in our capture data and evaluate $$H_1$$ in a 
 
 ### How does this relate to IQ signal analysis
 
-In-phase and quadrature component&mdash;IQ&mdash; signals can be captured to form a point cloud in the complex plane. Because FM is constant-envelope modulation[^1][^2], we expect the trajectory to form a hole at the origin, forming a "donut" (or annulus) rather than a disk. The presence and stability of an $$H_1$$ feature provides a direct topological signature of whether or not the constant-envelope property is (approximately) holding in the real world.
+In-phase and quadrature component&mdash;IQ&mdash;signals can be captured to form a point cloud in the complex plane. Because FM is constant-envelope modulation[^1][^2], we expect the trajectory to form a hole at the origin, forming a "donut" (or annulus) rather than a disk. The presence and stability of an $$H_1$$ feature provides a direct topological signature of whether or not the constant-envelope property is (approximately) holding in the real world.
 
 Given this, we have a testable hypothesis: FM should trace a ring/annulus, not a disk. This document directly tests this hypothesis and includes an instance where the naive prediction initially failed to hold.
 
@@ -83,7 +83,7 @@ FM is not _precisely_ a circle but _approximately_ holds under real hardware.
 ### Verification of pipeline correctness against hand-derived homology
 
 We computed a boundary matrix, $$\partial_{1}$$ and $$\partial_{2}$$ by hand against a subset of the sample data.
-We let four points in the cycle (the IQ annulus) spread nearly $$90\deg$$ apart with no diagonal at filtration
+We let four points in the cycle (the IQ annulus) spread nearly $$90\circ$$ apart with no diagonal at filtration
 $$\epsilon \in \left(180.3, 239.0\right)$$. (While the filtration choice is arbitrary, as shown below, the diagonal uses actual points from our capture.)
 We let $$\partial_{1}$$ be a $$4 \times 4$$ matrix initially representing a 4-cycle
 with vertices $$v_0$$, $$v_1$$, $$v_2$$, and $$v_3$$. We constructed $$\partial_{1}$$ as follows:
