@@ -4,7 +4,7 @@
 
 In a general sense, Perea and Harer[^6] describe persistent homology as
 
-> Persistent homology is a topological method for measuring the shapes of spaces
+> a topological method for measuring the shapes of spaces
 > and the features of functions.
 
 Ghrist[^5] describes it as "a homology theory for point-cloud data sets," and Wright[^4] gives a slightly more terse definition of persistent homology as
@@ -46,7 +46,7 @@ Because FM is constant-envelope modulation[^1][^2], the signal's amplitude shoul
 
 ### Null results
 
-We cannot conclude that raw IQ traces a clean circle. Our results show that some form of adjustment (e.g., frequency offset correction) is required to produce this conclusion.
+We cannot conclude that raw IQ traces a clean circle. Our results show that some form of adjustment (e.g., frequency offset correction) is required to produce this conclusion. Myers, et al.[^7] note that Vietoris-Rips, and thus Ripser, performed the worst in their topological data analysis of RF signals, noting that Vietoris-Rips-derived topology's noise sensitivity underperformed sublevel set-persistence and heat maps under additive noise in their benchmarks. The provides further evidence that we should some corrective adjustment to address noise sensitivity and determine if we must fail to reject the null hypothesis.
 
 #### Verification of correction hypothesis
 
@@ -61,7 +61,7 @@ This small offset nonetheless produced a cleaner annulus (with noise) with a hol
 
 ![IQ trajectory (2000 contiguous samples  &mdash; corrected)](./img/iq-trajectory-2000-window-with-correction.png)
 
-This shows the trajectory is sensitive even to very small residual rotation, giving more credence to the working hypothesis. We then explored the $$H_1$$ features on the corrected samples, which showed
+This shows the trajectory is sensitive even to very small residual rotation, giving more credence to the working hypothesis. It is feasible that additive noise could have contributed to our original results, which further reflects the results Myers, et al. [^7] obtained in their analysis. We then explored the $$H_1$$ features on the corrected samples, which showed
 
 ```
 H1 features: 461
@@ -163,3 +163,4 @@ Wright's video surveys several authors, including Ghrist and Perea-Harer, cited 
 [^4]: Wright, Matthew. "Introduction to Persistent Homology." [https://www.youtube.com/watch?v=2PSqWBIrn90](https://www.youtube.com/watch?v=2PSqWBIrn90)
 [^5]: Ghrist, Robert. "Barcodes: The persistent topology of data" Bulletin of the American Mathematical Society 45 (2008): 61-75. https://pubs.ams.org/journals/bull/2008-45-01/S0273-0979-07-01191-3
 [^6]: Perea, Jose A., and John Harer. "Sliding Windows and Persistence: An Application of Topological Methods to Signal Analysis." Foundations of Computational Mathematics 15.3 (2015): 799-838. https://arxiv.org/abs/1307.6188
+[^7]: Myers A.D., T.J. Doster, C.C. Olson, and T.H. Emerson. "Topological and Dynamical Representations for Radio Frequency Signal Classification." _ICML 2024 Workshop on Geometry-grounded Representation Learning and Generative Modeling, July 29, 2024. Vienna, Austria._ : https://openreview.net/forum?id=WlxdwFVOGj
