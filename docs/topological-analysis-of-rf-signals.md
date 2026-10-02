@@ -80,10 +80,10 @@ The IQ trajectory gives the shape we expected, but the claim that "FM is a circl
 
 FM is not _precisely_ a circle but _approximately_ holds under real hardware.
 
-### Verification of pipeline correctness against hand-derived homology
+### Verification of Ripser correctness on a 4-point cloud against hand-derived homology
 
-We computed a boundary matrix, $$\partial_{1}$$ and $$\partial_{2}$$ by hand against a subset of the sample data.
-We let four points in the cycle (the IQ annulus) spread nearly $$90\circ$$ apart with no diagonal at filtration
+We computed a boundary matrix, $$\partial_{1}$$ and $$\partial_{2}$$ by hand against a subset of the sample corrected data.
+We let four points in the cycle (the IQ annulus) spread nearly $$90^{\circ}$$ apart with no diagonal at filtration
 $$\epsilon \in \left(180.3, 239.0\right)$$. (While the filtration choice is arbitrary, as shown below, the diagonal uses actual points from our capture.)
 We let $$\partial_{1}$$ be a $$4 \times 4$$ matrix initially representing a 4-cycle
 with vertices $$v_0$$, $$v_1$$, $$v_2$$, and $$v_3$$. We constructed $$\partial_{1}$$ as follows:
@@ -145,7 +145,7 @@ Further, both columns are independent and span a 2-dimensional image inside a 2-
 
 $$H_{1} = \ker\left(\partial_{1}\right)/\textrm{im}\left(\partial_{2}\right) = 0$$[^3],
 
-and the hand-computed matrix matches the persistence diagram. The loops given above get filled once a single filtration event ($$H_{1}$$ born at $$\epsilon \approx 180.3$$, death at $$\epsilon \approx 239.0$$) arrives, eliminating the 2-dimensional $$\textrm{im}\left(\partial_{2}\right)$$ mapping onto $$\ker\left(\partial_{1}\right)$$ in one step, in agreement with the Ripser output.
+and the hand-computed matrix matches the Ripser results against the same points. The loops given above get filled once a single filtration event ($$H_{1}$$ born at $$\epsilon \approx 180.3$$, death at $$\epsilon \approx 239.0$$) arrives, eliminating the 2-dimensional $$\textrm{im}\left(\partial_{2}\right)$$ mapping onto $$\ker\left(\partial_{1}\right)$$ in one step, in agreement with the Ripser output.
 
 ### Further questions
 
@@ -163,4 +163,4 @@ Wright's video surveys several authors, including Ghrist and Perea-Harer, cited 
 [^4]: Wright, Matthew. "Introduction to Persistent Homology." [https://www.youtube.com/watch?v=2PSqWBIrn90](https://www.youtube.com/watch?v=2PSqWBIrn90)
 [^5]: Ghrist, Robert. "Barcodes: The persistent topology of data" Bulletin of the American Mathematical Society 45 (2008): 61-75. https://pubs.ams.org/journals/bull/2008-45-01/S0273-0979-07-01191-3
 [^6]: Perea, Jose A., and John Harer. "Sliding Windows and Persistence: An Application of Topological Methods to Signal Analysis." Foundations of Computational Mathematics 15.3 (2015): 799-838. https://arxiv.org/abs/1307.6188
-[^7]: Myers A.D., T.J. Doster, C.C. Olson, and T.H. Emerson. "Topological and Dynamical Representations for Radio Frequency Signal Classification." _ICML 2024 Workshop on Geometry-grounded Representation Learning and Generative Modeling, July 29, 2024. Vienna, Austria._ : https://openreview.net/forum?id=WlxdwFVOGj
+[^7]: Myers A.D., T.J. Doster, C.C. Olson, and T.H. Emerson. "Topological and Dynamical Representations for Radio Frequency Signal Classification." _ICML 2024 Workshop on Geometry-grounded Representation Learning and Generative Modeling. Vienna, Austria._ : https://openreview.net/forum?id=WlxdwFVOGj
