@@ -46,7 +46,7 @@ Because FM is constant-envelope modulation[^1][^2], the signal's amplitude shoul
 
 ### Null results
 
-We cannot conclude that raw IQ traces a clean circle. Our results show that some form of adjustment (e.g., frequency offset correction) is required to produce this conclusion. Myers, et al.[^7] note that Vietoris-Rips, and thus Ripser, performed the worst in their topological data analysis of RF signals, noting that Vietoris-Rips-derived topology's noise sensitivity underperformed sublevel set-persistence and heat maps under additive noise in their benchmarks. The provides further evidence that we should some corrective adjustment to address noise sensitivity and determine if we must fail to reject the null hypothesis.
+We cannot conclude that raw IQ traces a clean circle. Our results show that some form of adjustment (e.g., frequency offset correction) is required to produce this conclusion. Myers, et al.[^7] note that Vietoris-Rips, and thus Ripser, performed the worst of the authors' topological/dynamical features, conjecturing that Vietoris-Rips-derived topology may have noise sensitivity and thus is why it underperformed sublevel set-persistence and heat maps under additive noise in their benchmarks. The provides further evidence that we should some corrective adjustment to address noise sensitivity and determine if we must fail to reject the null hypothesis.
 
 #### Verification of correction hypothesis
 
