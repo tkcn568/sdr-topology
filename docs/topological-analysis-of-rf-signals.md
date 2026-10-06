@@ -151,6 +151,7 @@ and the hand-computed matrix matches the Ripser results against the same points.
 
 - ~~Does our working hypothesis hold? Does adjusting the frequency offset lead us closer to a clean circle, or is the assumption in our claim completely naive?~~
 - ~~Is the "circle" intuition a simplification? Can we ever expect this clean of an outcome?~~
+- How can we further refine our claims to pass scrutiny?
 
 ## Miscellany
 
